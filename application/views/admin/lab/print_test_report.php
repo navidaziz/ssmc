@@ -99,27 +99,29 @@
 
 <body>
     <page size='A4'>
-        <table class="table" style="height: 10px;">
-            <tr>
-                <td style="text-align: center;">
-                    <img style="width: 80px;"
-                        src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>"
-                        alt="<?php echo $system_global_settings[0]->system_title ?>"
-                        title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" />
-                    <h4><?php echo $system_global_settings[0]->system_title ?></h4>
-                    <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No.
-                        <?php echo $system_global_settings[0]-> phone_number; ?></small>
 
-                </td>
-
-            </tr>
-        </table>
         <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
 
             <table style="width: 100%;">
                 <thead>
                     <tr>
                         <td>
+                            <table class="table">
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img style="width: 80px;"
+                                            src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>"
+                                            alt="<?php echo $system_global_settings[0]->system_title ?>"
+                                            title="<?php echo $system_global_settings[0]->system_title ?>"
+                                            style="width:250px !important" />
+                                        <h4><?php echo $system_global_settings[0]->system_title ?></h4>
+                                        <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No.
+                                            <?php echo $system_global_settings[0]-> phone_number; ?></small>
+
+                                    </td>
+
+                                </tr>
+                            </table>
                             <table style="width: 100%; margin-top: 5px;">
                                 <tr>
                                     <td style="width: 45%;">
