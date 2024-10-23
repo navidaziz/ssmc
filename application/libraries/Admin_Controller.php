@@ -29,7 +29,7 @@ class Admin_Controller extends MY_Controller{
         $this->data['wide_page'] = array("dashboard", "sale_point", 'reception', 'return_point', 'items');
 		
 		$system_global_setting_id = 1;
-		$fields = $fields = array("sytem_admin_logo", "system_title", "system_sub_title", "sytem_public_logo", "address", "phone_number" );
+		$fields = $fields = array("*");
 		$join_table = $join_table = array();
 		$where = "system_global_setting_id = $system_global_setting_id";
 		$this->data["system_global_settings"] = $this->system_global_setting_model->joinGet($fields, "system_global_settings", $join_table, $where, false, true);
