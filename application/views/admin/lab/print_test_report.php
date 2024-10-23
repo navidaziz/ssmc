@@ -103,13 +103,14 @@
         <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
 
             <table style="width: 100%;">
+
                 <thead>
                     <tr>
                         <td>
                             <table class="table">
                                 <tr>
                                     <td style="text-align: center;">
-                                        <img style="width: 80px;"
+                                        <img style="width: 50px;"
                                             src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>"
                                             alt="<?php echo $system_global_settings[0]->system_title ?>"
                                             title="<?php echo $system_global_settings[0]->system_title ?>"
