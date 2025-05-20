@@ -475,11 +475,7 @@
         <div class="page-footer"
             style="background-color: rgb(229, 228, 226) !important; border:1px solid rgb(229, 228, 226); text-align:center">
 
-            <small>
-                <strong><?php echo $system_global_settings[0]->address ?></strong>
-
-                <br />
-                Print @ <?php echo date("d M, Y h:m:s A"); ?>
+            <small>Print @ <?php echo date("d M, Y h:m:s A"); ?>
                 by
                 <?php
                 $query = "SELECT
