@@ -20,7 +20,7 @@ class Test_groups extends Admin_Controller
         $this->lang->load("test_group_tests", 'english');
         $this->lang->load("test_groups", 'english');
         $this->lang->load("system", 'english');
-        //$this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE); 
     }
     //---------------------------------------------------------------
 
@@ -90,7 +90,7 @@ class Test_groups extends Admin_Controller
 
 
         $query = "SELECT `test_id` FROM `test_group_tests` 
-			WHERE `test_group_id`='" . $test_group_id . "'";
+			WHERE `test_group_id`='" . $test_group_id . "' where status=1";
         $query_result = $this->db->query($query);
         $group_tests = $query_result->result();
         $group_test_ids = '0';
