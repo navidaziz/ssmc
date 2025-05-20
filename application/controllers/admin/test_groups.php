@@ -90,7 +90,7 @@ class Test_groups extends Admin_Controller
 
 
         $query = "SELECT `test_id` FROM `test_group_tests` 
-			WHERE `test_group_id`='" . $test_group_id . "' where status=1";
+			WHERE `test_group_id`='" . $test_group_id . "' and status=1";
         $query_result = $this->db->query($query);
         $group_tests = $query_result->result();
         $group_test_ids = '0';
