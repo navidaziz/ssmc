@@ -90,7 +90,7 @@ class Test_groups extends Admin_Controller
 
 
         $query = "SELECT `test_id` FROM `test_group_tests` 
-			WHERE `test_group_id`='" . $test_group_id . "' and status=1";
+			WHERE `test_group_id`='" . $test_group_id . "'";
         $query_result = $this->db->query($query);
         $group_tests = $query_result->result();
         $group_test_ids = '0';
@@ -531,9 +531,9 @@ class Test_groups extends Admin_Controller
     {
 
         $test_group_test_id = (int) $test_group_test_id;
-        $this->test_group_test_model->changeStatus($test_group_test_id, "3");
+        //$this->test_group_test_model->changeStatus($test_group_test_id, "3");
 
-        //$this->test_group_test_model->delete(array('test_group_test_id' => $test_group_test_id));
+        $this->test_group_test_model->delete(array('test_group_test_id' => $test_group_test_id));
         $this->session->set_flashdata("msg_success", $this->lang->line("delete_msg_success"));
         redirect(ADMIN_DIR . "test_groups/view_test_group/" . $test_group_id);
     }
