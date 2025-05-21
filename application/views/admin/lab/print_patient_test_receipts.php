@@ -66,8 +66,8 @@
 
 <body>
 
-    <h4><?php echo $system_global_settings[0]->system_title; ?> Chitral</h4>
-    <h6><?php echo $system_global_settings[0]->address; ?></h6>
+    <h4><strong><?php echo $system_global_settings[0]->system_title; ?></strong></h4>
+    <small><?php echo $system_global_settings[0]->address; ?></small>
     <h6>PHONE: <?php echo $system_global_settings[0]->phone_number; ?></h6>
 
     <h5>Receipt No: <?php echo $invoice_detail->invoice_id; ?></h5>
