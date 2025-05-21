@@ -145,7 +145,7 @@
         </tr>
         <tr>
             <td colspan="2" class="text-right bold">Discount</td>
-            <td><?php echo number_format($invoice->discount ?? 0, 2); ?> Rs</td>
+            <td><?php echo $invoice->discount; ?> Rs</td>
         </tr>
         <tr>
             <td colspan="2" class="text-right bold">Net Total</td>
