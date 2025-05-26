@@ -24,76 +24,76 @@
 
 
     <style>
-    body {
-        background: rgb(204, 204, 204);
+        body {
+            background: rgb(204, 204, 204);
 
-    }
+        }
 
-    page {
-        background: white;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 0.5cm;
-        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
-    }
-
-    page[size="A4"] {
-        width: 21cm;
-        /* height: 29.7cm;  */
-        height: auto;
-    }
-
-    page[size="A4"][layout="landscape"] {
-        width: 29.7cm;
-        height: 21cm;
-    }
-
-    page[size="A3"] {
-        width: 29.7cm;
-        height: 42cm;
-    }
-
-    page[size="A3"][layout="landscape"] {
-        width: 42cm;
-        height: 29.7cm;
-    }
-
-    page[size="A5"] {
-        width: 14.8cm;
-        height: 21cm;
-    }
-
-    page[size="A5"][layout="landscape"] {
-        width: 21cm;
-        height: 14.8cm;
-    }
-
-    @media print {
-
-        body,
         page {
-            margin: 0;
-            box-shadow: 0;
-            color: black;
+            background: white;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        }
+
+        page[size="A4"] {
+            width: 21cm;
+            /* height: 29.7cm;  */
+            height: auto;
+        }
+
+        page[size="A4"][layout="landscape"] {
+            width: 29.7cm;
+            height: 21cm;
+        }
+
+        page[size="A3"] {
+            width: 29.7cm;
+            height: 42cm;
+        }
+
+        page[size="A3"][layout="landscape"] {
+            width: 42cm;
+            height: 29.7cm;
+        }
+
+        page[size="A5"] {
+            width: 14.8cm;
+            height: 21cm;
+        }
+
+        page[size="A5"][layout="landscape"] {
+            width: 21cm;
+            height: 14.8cm;
+        }
+
+        @media print {
+
+            body,
+            page {
+                margin: 0;
+                box-shadow: 0;
+                color: black;
+            }
+
+
+
         }
 
 
-
-    }
-
-
-    .table>thead>tr>th,
-    .table>tbody>tr>th,
-    .table>tfoot>tr>th,
-    .table>thead>tr>td,
-    .table>tbody>tr>td,
-    .table>tfoot>tr>td {
-        padding: 8px;
-        line-height: 1;
-        vertical-align: top;
-        border-top: 1px solid #ddd;
-        font-size: 15px !important;
-    }
+        .table>thead>tr>th,
+        .table>tbody>tr>th,
+        .table>tfoot>tr>th,
+        .table>thead>tr>td,
+        .table>tbody>tr>td,
+        .table>tfoot>tr>td {
+            padding: 8px;
+            line-height: 1;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+            font-size: 15px !important;
+        }
     </style>
 </head>
 
@@ -117,7 +117,7 @@
                                             style="width:250px !important" />
                                         <h4><?php echo $system_global_settings[0]->system_title ?></h4>
                                         <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No.
-                                            <?php echo $system_global_settings[0]-> phone_number; ?></small>
+                                            <?php echo $system_global_settings[0]->phone_number; ?></small>
 
                                     </td>
 
@@ -160,7 +160,7 @@
                                                 <tr>
                                                     <th>Test Token No.</th>
                                                     <td><?php //echo $invoice_detail->test_token_id; 
-                              ?></td>
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
@@ -187,59 +187,59 @@
                         <td>
                             <table class="table table-bordered" style="text-align: left;">
                                 <?php
-                $count = 1;
-                foreach ($patient_tests_groups as $patient_tests_group) { ?>
-                                <tr>
-                                    <td colspan="4"><small
-                                            style=""><?php echo $patient_tests_group->test_group_name; ?></small></td>
-                                </tr>
+                                $count = 1;
+                                foreach ($patient_tests_groups as $patient_tests_group) { ?>
+                                    <tr>
+                                        <td colspan="4"><small
+                                                style=""><?php echo $patient_tests_group->test_group_name; ?></small></td>
+                                    </tr>
 
 
 
-                                <?php
+                                    <?php
 
-                  $normal_value = false;
-                  foreach ($patient_tests_group->patient_tests as $patient_test) {
-                    if ($patient_test->test_result != '') {
-                      if (trim($patient_test->test_normal_value) != "") {
-                        $normal_value = true;
-                      }
-                    }
-                  }
+                                    $normal_value = false;
+                                    foreach ($patient_tests_group->patient_tests as $patient_test) {
+                                        if ($patient_test->test_result != '') {
+                                            if (trim($patient_test->test_normal_value) != "") {
+                                                $normal_value = true;
+                                            }
+                                        }
+                                    }
 
 
-                  foreach ($patient_tests_group->patient_tests as $patient_test) { ?>
-                                <?php if ($patient_test->test_result != '') { ?>
-                                <?php if ($count == 1) { ?>
-                                <tr>
-                                    <!-- <th >#</th> -->
-                                    <th style="width:200px">Test Name</th>
+                                    foreach ($patient_tests_group->patient_tests as $patient_test) { ?>
+                                        <?php if ($patient_test->test_result != '') { ?>
+                                            <?php if ($count == 1) { ?>
+                                                <tr>
+                                                    <!-- <th >#</th> -->
+                                                    <th style="width:200px">Test Name</th>
 
-                                    <th style="width:200px">Test Result</th>
+                                                    <th style="width:200px">Test Result</th>
 
-                                    <?php if ($normal_value) { ?>
-                                    <th>Unit</th>
-                                    <th>Normal Value</th> <?php }  ?>
+                                                    <?php if ($normal_value) { ?>
+                                                        <th>Unit</th>
+                                                        <th>Normal Value</th> <?php }  ?>
 
-                                    <!-- <th>Remarks</th> -->
-                                </tr>
-                                <?php } ?>
-                                <tr>
-                                    <!-- <th><?php echo $count++; ?></th> -->
-                                    <th><?php echo $patient_test->test_name; ?></th>
+                                                    <!-- <th>Remarks</th> -->
+                                                </tr>
+                                            <?php } ?>
+                                            <tr>
+                                                <!-- <th><?php echo $count++; ?></th> -->
+                                                <th><?php echo $patient_test->test_name; ?></th>
 
-                                    <th> <?php echo $patient_test->test_result; ?> </th>
+                                                <th> <?php echo $patient_test->test_result; ?> </th>
 
-                                    <?php //if ($normal_value) { 
-                        ?>
-                                    <td> <?php echo $patient_test->unit; ?> </td>
-                                    <td><?php echo $patient_test->test_normal_value; ?></td>
-                                    <?php //}  
-                        ?>
-                                    <!-- <td><?php echo $patient_test->remarks; ?> </td> -->
-                                </tr>
-                                <?php } ?>
-                                <?php } ?>
+                                                <?php //if ($normal_value) { 
+                                                ?>
+                                                <td> <?php echo $patient_test->unit; ?> </td>
+                                                <td><?php echo $patient_test->test_normal_value; ?></td>
+                                                <?php //}  
+                                                ?>
+                                                <!-- <td><?php echo $patient_test->remarks; ?> </td> -->
+                                            </tr>
+                                        <?php } ?>
+                                    <?php } ?>
 
                                 <?php  } ?>
                             </table>
@@ -249,10 +249,10 @@
                         <td>
                             <br />
                             <?php if ($invoice_detail->remarks) { ?>
-                            <div style="text-align: left;"><strong>Remarks:</strong>
-                                <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;">
-                                    <?php echo $invoice_detail->remarks; ?></p>
-                            </div>
+                                <div style="text-align: left;"><strong>Remarks:</strong>
+                                    <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;">
+                                        <?php echo $invoice_detail->remarks; ?></p>
+                                </div>
                             <?php } ?>
                         </td>
                     </tr>
@@ -264,22 +264,22 @@
                             <br />
                             <?php
 
-              $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
-              $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
+                            $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
+                            $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
 
-              $query = "SELECT
+                            $query = "SELECT
                   `roles`.`role_title`,
                   `users`.`user_title`  
               FROM `roles`,
               `users` 
               WHERE `roles`.`role_id` = `users`.`role_id`
               AND `users`.`user_id`='" . $lab_technician_id . "'";
-              $user_data = $this->db->query($query)->result()[0];
-              ?> </p>
+                            $user_data = $this->db->query($query)->result()[0];
+                            ?> </p>
 
                             <p class="divFooter" style="text-align: right;">
                                 <b><?php echo $user_data->user_title; ?> (<?php echo $user_data->role_title; ?>)</b>
-                                <br />KMC Chitral
+                                <br />SSMC Chitral
                             </p>
                             <p style="text-align: center;">
                                 <small>Print @ <?php echo date("d M, Y h:m:s A"); ?></small>
