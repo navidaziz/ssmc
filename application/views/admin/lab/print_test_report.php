@@ -90,6 +90,10 @@
             border-top: 1px solid #ddd;
             font-size: 15px !important;
         }
+
+        @page {
+            margin: 10px !important;
+        }
     </style>
 </head>
 
@@ -108,7 +112,7 @@
             </tr>
         </table> -->
         <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
-            <div style="height: 100px;"></div>
+
             <table style="width: 100%;">
                 <thead>
                     <tr>
