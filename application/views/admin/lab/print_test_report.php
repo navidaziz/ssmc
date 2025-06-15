@@ -68,11 +68,7 @@
 
             body,
             page {
-                margin-top: 50mm;
-                /* This reserves space at the top of EACH printed page */
-                margin-left: 10mm;
-                margin-right: 10mm;
-                margin-bottom: 10mm;
+                margin: 0;
                 box-shadow: 0;
                 color: black;
             }
@@ -118,6 +114,7 @@
                 <thead>
                     <tr>
                         <td>
+                            <div class="print-header-space" style="height:50px;"></div>
                             <table style="width: 100%; margin-top: 5px;">
                                 <tr>
                                     <td style="width: 45%;">
