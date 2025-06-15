@@ -95,8 +95,8 @@
 
 <body>
     <page size='A4'>
-        <div style="height: 100px;"></div>
-        <!-- <table class="table">
+
+        <table class="table">
             <tr>
                 <td style="text-align: center;">
                     <img style="width: 80px;" src="<?php echo site_url("assets/logo.png"); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" />
@@ -106,7 +106,7 @@
                 </td>
 
             </tr>
-        </table> -->
+        </table>
         <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
 
             <table style="width: 100%;">
