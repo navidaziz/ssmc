@@ -68,10 +68,11 @@
 
             body,
             page {
-                margin-top: 100mm !important;
+                margin: 0;
                 box-shadow: 0;
                 color: black;
             }
+
 
 
 
@@ -89,6 +90,14 @@
             vertical-align: top;
             border-top: 1px solid #ddd;
             font-size: 15px !important;
+        }
+
+        @page {
+            margin-top: 50mm;
+            /* This reserves space at the top of EACH printed page */
+            margin-left: 10mm;
+            margin-right: 10mm;
+            margin-bottom: 10mm;
         }
     </style>
 </head>
