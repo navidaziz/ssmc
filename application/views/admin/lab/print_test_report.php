@@ -68,7 +68,7 @@
 
             body,
             page {
-                margin: 0;
+                margin-top: 100mm !important;
                 box-shadow: 0;
                 color: black;
             }
@@ -89,10 +89,6 @@
             vertical-align: top;
             border-top: 1px solid #ddd;
             font-size: 15px !important;
-        }
-
-        @page {
-            margin-top: 200px !important;
         }
     </style>
 </head>
