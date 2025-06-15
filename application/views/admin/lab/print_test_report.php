@@ -245,9 +245,9 @@
                 </tbody>
 
             </table>
-            <table>
+            <table style="width: 100%;">
                 <tr>
-                    <td>
+                    <td style="text-align: right;">
                         <br />
                         <br />
                         <?php
