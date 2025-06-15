@@ -243,37 +243,38 @@
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            <br />
-                            <br />
-                            <?php
 
-                            $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
-                            $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
-
-                            $query = "SELECT
-                  `roles`.`role_title`,
-                  `users`.`user_title`  
-              FROM `roles`,
-              `users` 
-              WHERE `roles`.`role_id` = `users`.`role_id`
-              AND `users`.`user_id`='" . $lab_technician_id . "'";
-                            $user_data = $this->db->query($query)->result()[0];
-                            ?> </p>
-
-                            <p class="divFooter" style="text-align: right;">
-                                <b><?php echo $user_data->user_title; ?> (<?php echo $user_data->role_title; ?>)</b>
-                                <br />SSMC Chitral
-                            </p>
-                            <p style="text-align: center;">
-                                <small>Print @ <?php echo date("d M, Y h:m:s A"); ?></small>
-                            </p>
-                        </td>
-                    </tr>
-                </tfoot>
             </table>
+            <table>
+                <tr>
+                    <td>
+                        <br />
+                        <br />
+                        <?php
+
+                        $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
+                        $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
+
+                        $query = "SELECT
+                                `roles`.`role_title`,
+                                `users`.`user_title`  
+                            FROM `roles`,
+                            `users` 
+                            WHERE `roles`.`role_id` = `users`.`role_id`
+                            AND `users`.`user_id`='" . $lab_technician_id . "'";
+                        $user_data = $this->db->query($query)->result()[0];
+                        ?> </p>
+
+                        <p class="divFooter" style="text-align: right;">
+                            <b><?php echo $user_data->user_title; ?> (<?php echo $user_data->role_title; ?>)</b>
+                            <br />SSMC Chitral
+                        </p>
+                        <p style="text-align: center;">
+                            <small>Print @ <?php echo date("d M, Y h:m:s A"); ?></small>
+                        </p>
+                    </td>
+                </tr>
+                </tfoot>
         </div>
 
     </page>
