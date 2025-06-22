@@ -173,14 +173,15 @@
                 <tbody>
                     <tr>
                         <td>
+                            <table class="table table-bordered" style="text-align: left;">
+                                <?php
+                                $count = 1;
+                                foreach ($patient_tests_groups as $patient_tests_group) { ?>
+                                    <tr>
+                                        <td colspan="4" style="text-align: center;"><strong style=""><?php echo $patient_tests_group->test_group_name; ?></strong></td>
+                                    </tr>
 
-                            <?php
-                            $count = 1;
-                            foreach ($patient_tests_groups as $patient_tests_group) { ?>
-                                <div style="text-align: center;">
-                                    <h5><strong style=""><?php echo $patient_tests_group->test_group_name; ?></strong></h5>
-                                </div>
-                                <table class="table table-bordered" style="text-align: left;">
+
 
                                     <?php
 
@@ -228,7 +229,7 @@
                                     <?php } ?>
 
                                 <?php  } ?>
-                                </table>
+                            </table>
                         </td>
                     </tr>
                     <tr>
