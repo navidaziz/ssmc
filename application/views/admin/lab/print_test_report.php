@@ -88,7 +88,7 @@
             padding: 8px;
             line-height: 1;
             vertical-align: top;
-            border-top: 1px solid black !important;
+            border: 1px solid black !important;
             font-size: 15px !important;
         }
     </style>
