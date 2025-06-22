@@ -177,7 +177,9 @@ class Lab extends Admin_Controller
 				`patient_tests` 
 		WHERE `test_groups`.`test_group_id` = `patient_tests`.`test_group_id`
 		AND `patient_tests`.`invoice_id`=$invoice_id
-		GROUP BY `test_groups`.`test_group_name`;";
+		GROUP BY `test_groups`.`order` ASC;";
+
+		//GROUP BY `test_groups`.`test_group_name`;
 
 		$patient_tests_groups = $this->db->query($query)->result();
 		foreach ($patient_tests_groups as $patient_tests_group) {
