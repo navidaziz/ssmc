@@ -90,7 +90,7 @@
 <body>
   <page size='A4'>
     <div style="padding: 5px;  padding-left:20px; padding-right:20px; " contenteditable="true">
-      <h3 style="text-align: center;"> <?php echo $system_global_settings[0]->system_title ?> Chitral </h3>
+      <h3 style="text-align: center;"> Alkhidmat Diagnostic Center Chitral </h3>
       <h4 style="text-align: center;">Month <?php echo $month ?> Progress Report</h4>
       <div style="overflow-x:auto;">
         <table class="table1" style="font-size: 9px !important; width:99%; border-collapse: collapse !important; ">
@@ -600,7 +600,7 @@
       ?> </p>
 
       <p class="divFooter" style="text-align: right;"><b><?php echo $user_data->user_title; ?> <?php echo $user_data->role_title; ?></b>
-        <br /><?php echo $system_global_settings[0]->system_title ?> Chitral <br />
+        <br />Alkhidmat Diagnostic Center Chitral City <br />
         <strong>Printed at: <?php echo date("d, F, Y h:i:s A", time()); ?></strong>
       </p>
     </div>

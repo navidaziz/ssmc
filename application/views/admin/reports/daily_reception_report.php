@@ -9,7 +9,7 @@
   <script src="script.js"></script>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <title><?php echo $system_global_settings[0]->system_title ?></title>
+  <title>CCML</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -93,8 +93,9 @@
 <body>
   <page size='A4'>
     <div style="padding: 5px;  padding-left:20px; padding-right:20px; " contenteditable="true">
-      <h3 style="text-align: center;"> <?php echo $system_global_settings[0]->system_title ?> Chitral </h3>
+      <h3 style="text-align: center;"> Alkhidmat Diagnostic Center Chitral </h3>
       <h4 style="text-align: center;">Daily Receipt Report ( Date: <?php echo date("d F, Y ", strtotime($date)) ?>)</h4>
+
 
       <h5>Category Wise Report</h5>
 
@@ -257,7 +258,7 @@
           <th>ECG INC</th>
           <th>X-RAY INC</th>
           <th>ULTRASOUND INC</th>
-          <th>Admin SSMC</th>
+          <th>Admin Alkhidmat</th>
           <th>Reception</th>
         </tr>
 
@@ -276,7 +277,7 @@
       ?> </p>
 
       <p class="divFooter" style="text-align: right;"><b><?php echo $user_data->user_title; ?> <?php echo $user_data->role_title; ?></b>
-        <br /><?php echo $system_global_settings[0]->system_title ?> Chitral <br />
+        <br />Alkhidmat Diagnostic Center Chitral City <br />
         <strong>Printed at: <?php echo date("d, F, Y h:i:s A", time()); ?></strong>
       </p>
 

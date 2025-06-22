@@ -92,7 +92,7 @@ echo form_open_multipart(ADMIN_DIR . "reception/save_data", $add_form_attr);
             <td>Patient Name: </td>
 
             <td>
-              <input style="display: none;" type="text" name="validate" id="validate" required="required" />
+              <input style="display: no ne;" type="text" name="validate" id="validate" required="required" />
 
               <input type="hidden" name="patientID" id="patientID" />
 
