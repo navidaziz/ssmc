@@ -29,7 +29,6 @@ class reports extends Admin_Controller
 	public function index()
 	{
 
-		exit();
 		$this->load->view(ADMIN_DIR . "reports/index", $this->data);
 	}
 
