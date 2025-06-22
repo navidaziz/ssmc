@@ -227,8 +227,9 @@
                                         <?php } ?>
                                     <?php } ?>
 
-                                <?php  } ?>
+
                                 </table>
+                            <?php  } ?>
                         </td>
                     </tr>
                     <tr>
