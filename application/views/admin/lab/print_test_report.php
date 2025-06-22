@@ -178,7 +178,7 @@
                                 $count = 1;
                                 foreach ($patient_tests_groups as $patient_tests_group) { ?>
                                     <tr>
-                                        <td colspan="4"><small style=""><?php echo $patient_tests_group->test_group_name; ?></small></td>
+                                        <td colspan="4" style="text-align: center;"><strong style=""><?php echo $patient_tests_group->test_group_name; ?></strong></td>
                                     </tr>
 
 
