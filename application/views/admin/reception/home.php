@@ -673,6 +673,13 @@ echo form_open_multipart(ADMIN_DIR . "reception/save_data", $add_form_attr);
 
     }
     $('#testGroupIDs').val($testGrouupIds);
+
+    if ($('#testGroupIDs').val() === '') {
+      $('#validate').val("");
+    } else {
+      $('#validate').val("1");
+    }
+
     price_list += '</table>';
 
     $('#test_price_list').html(price_list);
