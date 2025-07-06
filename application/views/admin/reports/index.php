@@ -67,7 +67,7 @@
 
                     <hr />
 
-                    <h4><strong>Lab Test Report</strong></h4>
+                    <h4><strong>Categories Detail Report</strong></h4>
                     <form action="<?php echo site_url(ADMIN_DIR . 'reports/categories_custom_report'); ?>" method="get" target="_blank" class="form-inline" role="form">
                         <div class="form-group">
                             <label for="start_date">Start Date:</label>
