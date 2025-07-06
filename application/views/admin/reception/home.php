@@ -227,7 +227,7 @@ echo form_open_multipart(ADMIN_DIR . "reception/save_data", $add_form_attr);
             <table style="width:100%">
               <tr>
                 <td rowspan="3"><strong>Discount:<strong> <br />
-                      <input <?php if ($this->session->userdata('user_id') != 3) { ?> readonly <?php } ?> onkeyup="update_price_list()" type="number" name="discount" value="0" id="discount" class="for m-control" style="width:80px" /></td>
+                      <input <?php if ($this->session->userdata('user_id') != 3) { ?> <?php } ?> onkeyup="update_price_list()" type="number" name="discount" value="0" id="discount" class="for m-control" style="width:80px" /></td>
                 <th>Total Price:</th>
                 <td id="test_total_price">00.00 Rs. </td>
               </tr>
