@@ -29,8 +29,169 @@ class reports extends Admin_Controller
 	public function index()
 	{
 
-		exit();
-		$this->load->view(ADMIN_DIR . "reports/index", $this->data);
+
+		$this->data['title'] = 'Reports';
+		$this->data["view"] = ADMIN_DIR . "reports/index";
+		$this->load->view(ADMIN_DIR . "layout", $this->data);
+	}
+
+
+
+
+
+
+	// public function custom_report()
+	// {
+	// 	$start_date = $this->input->get('start_date');
+	// 	$end_date = $this->input->get('end_date');
+
+	// 	//$this->data = $this->reports_model->daily_reception_report($date);
+	// 	$this->data = $this->reports_model->today_recp_report($date);
+	// 	$this->data['date'] = $date;
+
+	// 	$this->load->view(ADMIN_DIR . "reports/daily_reception_report", $this->data);
+	// }
+
+	public function categories_custom_report()
+	{
+
+
+
+		$this->data['start_date'] = $start_date = $this->input->get('start_date');
+		$this->data['end_date']   = $end_date   = $this->input->get('end_date');
+
+		$query = "SELECT * FROM `test_categories` WHERE `test_category_id` IN (1,2,3,4)";
+		$test_categories = $this->db->query($query)->result();
+
+		foreach ($test_categories as $test_categorie) {
+			$query = "SELECT 
+                tg.`test_group_name` AS test_name, 
+                COUNT(tg.`test_group_id`) AS test_total,
+                SUM(itg.`price`) AS total_rs 
+            FROM 
+                `invoice_test_groups` AS itg
+            JOIN 
+                `test_groups` AS tg ON itg.`test_group_id` = tg.`test_group_id`
+            JOIN 
+                `invoices` AS i ON itg.`invoice_id` = i.`invoice_id`
+            WHERE 
+                i.`is_deleted` = 0
+                AND tg.`category_id` = ?
+                AND DATE(itg.`created_date`) BETWEEN ? AND ?
+            GROUP BY 
+                tg.`test_group_id`
+            ORDER BY 
+                test_total DESC";
+
+			$result = $this->db->query($query, [
+				$test_categorie->test_category_id,
+				$start_date,
+				$end_date
+			]);
+
+			$test_categorie->test_total = $result->result();
+		}
+
+
+		$this->data['test_categories'] = $test_categories;
+
+
+		$this->load->view(ADMIN_DIR . "reports/categories_custom_report", $this->data);
+	}
+
+
+	public function custom_report()
+	{
+
+		$this->data['start_date'] = $start_date = $this->input->get('start_date');
+		$this->data['end_date'] = $end_date = $this->input->get('end_date');
+
+
+		$query = "SELECT
+						`test_categories`.`test_category`
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`total_price`,NULL)) AS total_sum
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`discount`,NULL)) AS total_discount
+						, COUNT(IF((`invoices`.`is_deleted`=0 AND `invoices`.`discount` > 0) ,1,NULL)) AS total_dis_count
+						, COUNT(IF(`invoices`.`is_deleted`=0,1,NULL)) AS total_count
+						, COUNT(IF(`invoices`.`is_deleted`=1,1,NULL)) AS total_receipt_cancelled
+						FROM
+						`test_categories`
+						LEFT JOIN `invoices` 
+						ON (`test_categories`.`test_category_id` = `invoices`.`category_id`)
+						WHERE DATE(`invoices`.`created_date`) BETWEEN '" . $start_date . "' AND '" . $end_date . "' 
+						AND `invoices`.`category_id` !=5
+						GROUP BY `test_categories`.`test_category`;";
+		$today_cat_wise_progress_report = $this->db->query($query)->result();
+		$this->data["today_cat_wise_progress_reports"] = $today_cat_wise_progress_report;
+
+		$query = "SELECT SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`total_price`,NULL)) AS total_sum
+			, COUNT(IF(`invoices`.`is_deleted`=0,1,NULL)) AS total_count
+			, COUNT(IF(`invoices`.`is_deleted`=1,1,NULL)) AS total_receipt_cancelled
+			, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`discount`,NULL)) AS total_discount
+			, COUNT(IF((`invoices`.`is_deleted`=0 AND `invoices`.`discount` > 0) ,1,NULL)) AS total_dis_count
+						FROM
+						`test_categories`
+						LEFT JOIN `invoices` 
+						ON (`test_categories`.`test_category_id` = `invoices`.`category_id`)
+						WHERE DATE(`invoices`.`created_date`) BETWEEN '" . $start_date . "' AND '" . $end_date . "' 
+						AND `invoices`.`category_id` !=5";
+		$today_cat_wise_progress_report = $this->db->query($query)->result();
+		$this->data["today_total_cat_wise_progress_reports"] = $today_cat_wise_progress_report;
+
+		$query = "SELECT
+						`test_groups`.`test_group_name`
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`total_price`,NULL)) AS total_sum
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`alkhidmat_income`,NULL)) AS shares
+						, COUNT(IF(`invoices`.`is_deleted`=0,1,NULL)) AS total_count
+						, COUNT(IF(`invoices`.`is_deleted`=1,1,NULL)) AS total_receipt_cancelled
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`discount`,NULL)) AS total_discount
+						, COUNT(IF((`invoices`.`is_deleted`=0 AND `invoices`.`discount` > 0) ,1,NULL)) AS total_dis_count
+					FROM
+					`test_groups`,
+					`invoices` 
+					WHERE `test_groups`.`test_group_id` = `invoices`.`opd_doctor`
+					AND `invoices`.`category_id`=5
+					AND DATE(`invoices`.`created_date`) BETWEEN '" . $start_date . "' AND '" . $end_date . "' 
+					GROUP BY `test_groups`.`test_group_name`";
+		$today_OPD_report = $this->db->query($query)->result();
+		$this->data["today_OPD_reports"] = $today_OPD_report;
+
+		$query = "SELECT SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`total_price`,NULL)) AS total_sum,
+			SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`alkhidmat_income`,NULL)) AS shares
+			, COUNT(IF(`invoices`.`is_deleted`=0,1,NULL)) AS total_count
+			, COUNT(IF(`invoices`.`is_deleted`=1,1,NULL)) AS total_receipt_cancelled
+			, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`discount`,NULL)) AS total_discount
+						, COUNT(IF((`invoices`.`is_deleted`=0 AND `invoices`.`discount` > 0) ,1,NULL)) AS total_dis_count
+					FROM
+					`test_groups`,
+					`invoices` 
+					WHERE `test_groups`.`test_group_id` = `invoices`.`opd_doctor`
+					AND `invoices`.`category_id`=5
+					AND DATE(`invoices`.`created_date`) BETWEEN '" . $start_date . "' AND '" . $end_date . "' ";
+		$today_OPD_report = $this->db->query($query)->result();
+		$this->data["today_total_OPD_reports"] = $today_OPD_report;
+
+
+		$query = "SELECT
+						`test_groups`.`test_group_name`
+						, `test_groups`.`test_group_id`
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`total_price`,NULL)) AS total_sum
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`alkhidmat_income`,NULL)) AS shares
+						, COUNT(IF(`invoices`.`is_deleted`=0,1,NULL)) AS total_count
+						, COUNT(IF(`invoices`.`is_deleted`=1,1,NULL)) AS total_receipt_cancelled
+						, SUM(IF(`invoices`.`is_deleted`=0,`invoices`.`discount`,NULL)) AS total_discount
+						, COUNT(IF((`invoices`.`is_deleted`=0 AND `invoices`.`discount` > 0) ,1,NULL)) AS total_dis_count
+					FROM
+					`test_groups`,
+					`invoices` 
+					WHERE `test_groups`.`test_group_id` = `invoices`.`opd_doctor`
+					AND `invoices`.`category_id`=5
+					AND `test_groups`.`share` >0
+					AND DATE(`invoices`.`created_date`) BETWEEN '" . $start_date . "' AND '" . $end_date . "' 
+					GROUP BY `test_groups`.`test_group_name`";
+		$income_from_drs = $this->db->query($query)->result();
+		$this->data["income_from_drs"] = $income_from_drs;
+		$this->load->view(ADMIN_DIR . "reports/custom_report", $this->data);
 	}
 
 
@@ -49,17 +210,7 @@ class reports extends Admin_Controller
 		$this->load->view(ADMIN_DIR . "reports/daily_reception_report", $this->data);
 	}
 
-	public function custom_report()
-	{
-		$start_date = "2023-07-01";
-		$end_date = "2024-06-30";
-		//$this->data = $this->reports_model->daily_reception_report($date);
-		$this->data = $this->reports_model->custom_report($start_date, $end_date);
-		$this->data['start_date'] = $start_date;
-		$this->data['end_date'] = $end_date;
 
-		$this->load->view(ADMIN_DIR . "reports/custom_report", $this->data);
-	}
 
 	public function today_recp_report($date)
 	{
