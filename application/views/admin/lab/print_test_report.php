@@ -108,15 +108,18 @@
 
                             <table style="width: 100%;">
                                 <tr>
-                                    <th><img style="width: 60px;" src="<?php echo site_url("assets/logo.png"); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" /></th>
+                                    <th><img style="width: 60px;" src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" /></th>
                                     <td style="text-align: center;">
 
                                         <h4>
                                             <strong>
-                                                <?php echo $system_global_settings[0]->system_title ?>
+                                                <?php //echo $system_global_settings[0]->system_title 
+                                                ?>
+                                                Shandoor Medical and Surgical Center Lab Chitral
                                             </strong>
                                         </h4>
-                                        <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No. 0943-412224</small>
+                                        <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No. 0943 413721
+                                        </small>
 
                                     </td>
 
