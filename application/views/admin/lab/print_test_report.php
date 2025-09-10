@@ -114,7 +114,7 @@
                 <thead>
                     <tr>
                         <td>
-                            <div class="print-header-space" style="height:50px;"></div>
+                            <div class="print-header-space" style="height:10px;"></div>
                             <table style="width: 100%; margin-top: 5px;">
                                 <tr>
                                     <td style="width: 45%;">
