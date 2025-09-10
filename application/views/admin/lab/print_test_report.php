@@ -105,183 +105,180 @@
                     <tr>
                         <td>
                             <div class="print-header-space" style="height:10px;"></div>
-                            <table style="width: 100%; margin-top: 5px;">
-                                <tr>
-                                    <td colspan="2">
-                                        <div style="border: 1px dashed black; margin: 5px; padding:5px">
-                                            <table style="width: 100%;">
+                            <div style="border: 1px dashed black; margin: 5px; padding:5px">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <img style="width: 80px;" src="<?php echo site_url("assets/logo.png"); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" />
+                                            <h4><?php echo $system_global_settings[0]->system_title ?></h4>
+                                            <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No. 0943-412224</small>
+
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <table style="width: 100%; margin-top: 5px;">
+
+                                    <tr>
+                                        <td style="width: 45%;">
+
+
+                                            <table style="text-align: left; width:100%; font-size: 14px !important;">
                                                 <tr>
-                                                    <td style="text-align: center;">
-                                                        <img style="width: 80px;" src="<?php echo site_url("assets/logo.png"); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" />
-                                                        <h4><?php echo $system_global_settings[0]->system_title ?></h4>
-                                                        <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No. 0943-412224</small>
-
-                                                    </td>
-
+                                                    <th>Patient Name: </th>
+                                                    <td><?php echo trim(ucwords(strtolower($invoice_detail->patient_name))); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender: <?php echo $invoice_detail->patient_gender; ?></th>
+                                                    <th>Age: <?php echo @$invoice_detail->patient_age; ?> Y</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mobile No:</th>
+                                                    <td><?php echo $invoice_detail->patient_mobile_no; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Address</th>
+                                                    <td><?php echo trim(ucwords(strtolower($invoice_detail->patient_address))); ?></td>
                                                 </tr>
                                             </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 45%;">
+                            </div>
+                        </td>
+                        <td>
+                            <div style="border: 1px dashed black; margin: 5px; padding:5px">
+                                <table style="text-align: left; width:100%; font-size: 14px !important;">
+                                    <tr>
+                                        <th>Invoice No:</th>
+                                        <td><?php echo $invoice_detail->invoice_id; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Test Token No.</th>
+                                        <td><?php //echo $invoice_detail->test_token_id; 
+                                            ?></td>
+                                    </tr>
 
+                                    <tr>
+                                        <th>Refereed By:</th>
+                                        <td><?php echo str_replace("Muhammad", "M.", $invoice_detail->doctor_name) . "( " . $invoice_detail->doctor_designation . " )"; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date & Time:</th>
+                                        <td><?php echo date("d F, Y h:i:s", strtotime($invoice_detail->created_date)); ?></td>
+                                    </tr>
+                                </table>
+                            </div>
 
-                                        <table style="text-align: left; width:100%; font-size: 14px !important;">
-                                            <tr>
-                                                <th>Patient Name: </th>
-                                                <td><?php echo trim(ucwords(strtolower($invoice_detail->patient_name))); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gender: <?php echo $invoice_detail->patient_gender; ?></th>
-                                                <th>Age: <?php echo @$invoice_detail->patient_age; ?> Y</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Mobile No:</th>
-                                                <td><?php echo $invoice_detail->patient_mobile_no; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td><?php echo trim(ucwords(strtolower($invoice_detail->patient_address))); ?></td>
-                                            </tr>
-                                        </table>
-        </div>
-        </td>
-        <td>
-            <div style="border: 1px dashed black; margin: 5px; padding:5px">
-                <table style="text-align: left; width:100%; font-size: 14px !important;">
-                    <tr>
-                        <th>Invoice No:</th>
-                        <td><?php echo $invoice_detail->invoice_id; ?></td>
+                        </td>
                     </tr>
-                    <tr>
-                        <th>Test Token No.</th>
-                        <td><?php //echo $invoice_detail->test_token_id; 
-                            ?></td>
-                    </tr>
+            </table>
+            </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
 
-                    <tr>
-                        <th>Refereed By:</th>
-                        <td><?php echo str_replace("Muhammad", "M.", $invoice_detail->doctor_name) . "( " . $invoice_detail->doctor_designation . " )"; ?></td>
-                    </tr>
-                    <tr>
-                        <th>Date & Time:</th>
-                        <td><?php echo date("d F, Y h:i:s", strtotime($invoice_detail->created_date)); ?></td>
-                    </tr>
-                </table>
-            </div>
+                        <?php
+                        $count = 1;
+                        foreach ($patient_tests_groups as $patient_tests_group) { ?>
+                            <div style="text-align: center;">
+                                <h5><strong style=""><?php echo $patient_tests_group->test_group_name; ?></strong></h5>
+                            </div>
+                            <table class="table table-bordered" style="text-align: left;">
 
-        </td>
-        </tr>
-        </table>
-        </th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
+                                <?php
 
-                    <?php
-                    $count = 1;
-                    foreach ($patient_tests_groups as $patient_tests_group) { ?>
-                        <div style="text-align: center;">
-                            <h5><strong style=""><?php echo $patient_tests_group->test_group_name; ?></strong></h5>
-                        </div>
-                        <table class="table table-bordered" style="text-align: left;">
-
-                            <?php
-
-                            $normal_value = false;
-                            foreach ($patient_tests_group->patient_tests as $patient_test) {
-                                if ($patient_test->test_result != '') {
-                                    if (trim($patient_test->test_normal_value) != "") {
-                                        $normal_value = true;
+                                $normal_value = false;
+                                foreach ($patient_tests_group->patient_tests as $patient_test) {
+                                    if ($patient_test->test_result != '') {
+                                        if (trim($patient_test->test_normal_value) != "") {
+                                            $normal_value = true;
+                                        }
                                     }
                                 }
-                            }
 
 
-                            foreach ($patient_tests_group->patient_tests as $patient_test) { ?>
-                                <?php if ($patient_test->test_result != '') { ?>
-                                    <?php if ($count == 1) { ?>
+                                foreach ($patient_tests_group->patient_tests as $patient_test) { ?>
+                                    <?php if ($patient_test->test_result != '') { ?>
+                                        <?php if ($count == 1) { ?>
+                                            <tr>
+                                                <!-- <th >#</th> -->
+                                                <th style="width:200px">Test Name</th>
+
+                                                <th style="width:200px">Test Result</th>
+
+                                                <?php if ($normal_value) { ?>
+                                                    <th>Unit</th>
+                                                    <th>Normal Value</th> <?php }  ?>
+
+                                                <!-- <th>Remarks</th> -->
+                                            </tr>
+                                        <?php } ?>
                                         <tr>
-                                            <!-- <th >#</th> -->
-                                            <th style="width:200px">Test Name</th>
+                                            <!-- <th><?php echo $count++; ?></th> -->
+                                            <th><?php echo $patient_test->test_name; ?></th>
 
-                                            <th style="width:200px">Test Result</th>
+                                            <th> <?php echo $patient_test->test_result; ?> </th>
 
-                                            <?php if ($normal_value) { ?>
-                                                <th>Unit</th>
-                                                <th>Normal Value</th> <?php }  ?>
-
-                                            <!-- <th>Remarks</th> -->
+                                            <?php //if ($normal_value) { 
+                                            ?>
+                                            <td> <?php echo $patient_test->unit; ?> </td>
+                                            <td><?php echo $patient_test->test_normal_value; ?></td>
+                                            <?php //}  
+                                            ?>
+                                            <!-- <td><?php echo $patient_test->remarks; ?> </td> -->
                                         </tr>
                                     <?php } ?>
-                                    <tr>
-                                        <!-- <th><?php echo $count++; ?></th> -->
-                                        <th><?php echo $patient_test->test_name; ?></th>
-
-                                        <th> <?php echo $patient_test->test_result; ?> </th>
-
-                                        <?php //if ($normal_value) { 
-                                        ?>
-                                        <td> <?php echo $patient_test->unit; ?> </td>
-                                        <td><?php echo $patient_test->test_normal_value; ?></td>
-                                        <?php //}  
-                                        ?>
-                                        <!-- <td><?php echo $patient_test->remarks; ?> </td> -->
-                                    </tr>
                                 <?php } ?>
-                            <?php } ?>
 
 
-                        </table>
-                    <?php  } ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                    <?php if ($invoice_detail->remarks) { ?>
-                        <div style="text-align: left;"><strong>Remarks:</strong>
-                            <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;"><?php echo $invoice_detail->remarks; ?></p>
-                        </div>
-                    <?php } ?>
-                </td>
-            </tr>
-        </tbody>
+                            </table>
+                        <?php  } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <?php if ($invoice_detail->remarks) { ?>
+                            <div style="text-align: left;"><strong>Remarks:</strong>
+                                <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;"><?php echo $invoice_detail->remarks; ?></p>
+                            </div>
+                        <?php } ?>
+                    </td>
+                </tr>
+            </tbody>
 
-        </table>
-        <table style="width: 100%;">
-            <tr>
-                <td style="text-align: right;">
-                    <br />
-                    <br />
-                    <?php
+            </table>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="text-align: right;">
+                        <br />
+                        <br />
+                        <?php
 
-                    $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
-                    $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
+                        $query = "SELECT `created_by` FROM `patient_tests` WHERE `invoice_id`= '" . $invoice_detail->invoice_id . "' ";
+                        $lab_technician_id = $this->db->query($query)->result()[0]->created_by;
 
-                    $query = "SELECT
+                        $query = "SELECT
                                 `roles`.`role_title`,
                                 `users`.`user_title`  
                             FROM `roles`,
                             `users` 
                             WHERE `roles`.`role_id` = `users`.`role_id`
                             AND `users`.`user_id`='" . $lab_technician_id . "'";
-                    $user_data = $this->db->query($query)->result()[0];
-                    ?> </p>
+                        $user_data = $this->db->query($query)->result()[0];
+                        ?> </p>
 
-                    <p class="divFooter" style="text-align: right;">
-                        <b><?php echo $user_data->user_title; ?> (<?php echo $user_data->role_title; ?>)</b>
-                        <br />SSMC Chitral
-                    </p>
-                    <p style="text-align: center;">
-                        <small>Print @ <?php echo date("d M, Y h:m:s A"); ?></small>
-                    </p>
-                </td>
-            </tr>
-            </tfoot>
-            </div>
+                        <p class="divFooter" style="text-align: right;">
+                            <b><?php echo $user_data->user_title; ?> (<?php echo $user_data->role_title; ?>)</b>
+                            <br />SSMC Chitral
+                        </p>
+                        <p style="text-align: center;">
+                            <small>Print @ <?php echo date("d M, Y h:m:s A"); ?></small>
+                        </p>
+                    </td>
+                </tr>
+                </tfoot>
+        </div>
 
     </page>
 </body>
