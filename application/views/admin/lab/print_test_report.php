@@ -99,7 +99,7 @@
 
 
         <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
-            <table class="table">
+            <table style="width: 100%;">
                 <tr>
                     <td style="text-align: center;">
                         <img style="width: 80px;" src="<?php echo site_url("assets/logo.png"); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" />
@@ -114,7 +114,7 @@
                 <thead>
                     <tr>
                         <td>
-                            <div class="print-header-space" style="height:110px;"></div>
+                            <div class="print-header-space" style="height:50px;"></div>
                             <table style="width: 100%; margin-top: 5px;">
                                 <tr>
                                     <td style="width: 45%;">
