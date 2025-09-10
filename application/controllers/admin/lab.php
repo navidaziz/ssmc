@@ -278,7 +278,7 @@ class Lab extends Admin_Controller
 
 		$this->load->view(ADMIN_DIR . "lab/print_patient_test_receipts", $this->patient_test_data());
 	}
-
+ 
 
 	public function print_patient_test_report($invoice_id)
 	{

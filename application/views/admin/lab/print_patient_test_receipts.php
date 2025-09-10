@@ -64,7 +64,7 @@
     </style>
 </head>
 
-<body>
+<body> 
 
     <h4><strong><?php echo $system_global_settings[0]->system_title; ?></strong></h4>
     <small><?php echo $system_global_settings[0]->address; ?></small>

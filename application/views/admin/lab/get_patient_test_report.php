@@ -1,4 +1,5 @@
 <div class="row">
+
   <div class="col-md-4">
     <h3>Patient Detail</h3>
     <table class="table table-bordered" style="text-align: left;">
@@ -53,26 +54,26 @@
         </tr>
       <?php } ?>
       <tr>
-          <th colspan="2" style="text-align: left;">Total</th>
-          <td><?php echo $invoice->price; ?></td>
-        </tr>
+        <th colspan="2" style="text-align: left;">Total</th>
+        <td><?php echo $invoice->price; ?></td>
+      </tr>
 
-        <tr>
-          <th colspan="2" style="text-align: left;">Discount</th>
-          <td><?php echo $invoice->discount; ?></td>
-        </tr>
+      <tr>
+        <th colspan="2" style="text-align: left;">Discount</th>
+        <td><?php echo $invoice->discount; ?></td>
+      </tr>
 
-        <tr>
-          <th colspan="2" style="text-align: left;">Paid</th>
-          <td><?php echo $invoice->total_price; ?></td>
-        </tr>
+      <tr>
+        <th colspan="2" style="text-align: left;">Paid</th>
+        <td><?php echo $invoice->total_price; ?></td>
+      </tr>
     </table>
 
   </div>
   <div class="col-md-8">
 
- 
-  
+
+
 
     <?php foreach ($patient_tests_groups as $patient_tests_group) { ?>
       <h3><?php echo $patient_tests_group->test_group_name; ?></h3>
@@ -98,8 +99,8 @@
       </table>
     <?php  } ?>
     <div style="text-align: left;"><strong>Remarks:</strong>
-    <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;"><?php echo $invoice_detail->remarks; ?></p>
+      <p style="border: 1px dashed #ddd; border-radius: 5px; padding: 5px; min-height: 50px;"><?php echo $invoice_detail->remarks; ?></p>
     </div>
-      <a target="new"  href="<?php echo site_url(ADMIN_DIR."lab/print_patient_test_report/$invoice_id") ?>" class="btn btn-primary" ><i class="fa fa-print" aria-hidden="true"></i> Print Test Report</a>
+    <a target="new" href="<?php echo site_url(ADMIN_DIR . "lab/print_patient_test_report/$invoice_id") ?>" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Print Test Report</a>
   </div>
 </div>
