@@ -108,7 +108,7 @@
 
                             <table style="width: 100%;">
                                 <tr>
-                                    <th><img style="width: 60px;" src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" /></th>
+                                    <th><img style="width: 80px;" src="<?php echo site_url("assets/uploads/" . $system_global_settings[0]->sytem_admin_logo); ?>" alt="<?php echo $system_global_settings[0]->system_title ?>" title="<?php echo $system_global_settings[0]->system_title ?>" style="width:250px !important" /></th>
                                     <td style="text-align: center;">
 
                                         <h4>
