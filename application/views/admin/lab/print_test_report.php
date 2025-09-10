@@ -108,7 +108,7 @@
 
             </tr>
         </table>
-        <div style="padding: 40px; padding-top:0px !important;" contenteditable="true">
+        <div style="padding: 5px; padding-top:0px !important;" contenteditable="true">
 
             <table style="width: 100%;">
                 <thead>
