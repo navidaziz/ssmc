@@ -113,9 +113,8 @@
 
                                         <h4>
                                             <strong>
-                                                <?php //echo $system_global_settings[0]->system_title 
-                                                ?>
-                                                Shandoor Medical and Surgical Center Lab Chitral
+                                                <?php echo $system_global_settings[0]->system_title ?>
+
                                             </strong>
                                         </h4>
                                         <small><?php echo $system_global_settings[0]->system_sub_title ?> - Phone No. 0943 413721
